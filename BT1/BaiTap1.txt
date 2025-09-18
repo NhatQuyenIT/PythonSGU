@@ -1,0 +1,20 @@
+1/ Bt số học: Tính tổng/hiệu/tích/thương của 2 số nguyên/thực
+2/ Bt về số nguyên: cho số nguyên N,
+a. Kiểm tra N có là số nguyên tố không?
+b. Xuất cac số nguyên từ 1->N và tổng của chúng
+c. Xuất cac số nguyên tố từ 1->N
+d. Xuất N số nguyên tố đầu tiên
+3/ Bt về mảng: cho 1 mảng số nguyên a, xuất kết quả:
+a. Các phần tử của mảng a và tổng của chúng
+b. Các phần tử là số nguyên tố của mảng a
+c. Thêm 1 phần tử mới vào mảng
+d. Xoá phần tử thứ k của mảng a
+e. nhập 1 số x, kiểm tra x có trong mảng a không, nếu có thì trả về vị trí của x trong mảng a
+4/ Bt về chuỗi: cho 1 chuỗi s, xuất kết quả:
+a. Độ dài của s
+b. Xoá bỏ khoảng trắng thừa của s
+c. Đếm số từ của s và xuất mỗi từ nằm trên 1 dòng
+d. nhập số tự nhiên k, xuất k ký tự bên trái của s, k kí tự bên phải của s
+e. nhập số tự nhiên k, n, xuất n kí tự của s kể từ vị trí k
+
+Số nguyên tố là số tự nhiên lớn hơn 1, chỉ có đúng hai ước số dương là 1 và chính nó. Nói cách khác, một số nguyên tố chỉ có thể được chia hết cho 1 và chính số đó, không có bất kỳ số nào khác chia hết cho nó. Ví dụ về số nguyên tố bao gồm 2, 3, 5, 7, 11, v.v. 

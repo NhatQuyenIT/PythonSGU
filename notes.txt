@@ -1,0 +1,25 @@
+# Sử dụng các lớp đã định nghĩa
+# sp1 = SanPham("S001", "Sữa tươi Vinamilk", 28000, 100)
+# sp2 = SanPham("S002", "Bánh Oreo", 15000, 250)
+
+# kho = KhoHang()
+# kho.them_san_pham(sp1)
+# kho.them_san_pham(sp2)
+
+# print("\n--- DANH SÁCH SẢN PHẨM TRONG KHO ---")
+# for sp in kho.danh_sach_san_pham:
+#     sp.hien_thi_thong_tin()
+#     print("-" * 30)
+
+# print("\n--- CẬP NHẬT SẢN PHẨM ---")
+# kho.cap_nhat_san_pham("S001", gia_moi=30000, so_luong_moi=90)
+# kho.cap_nhat_san_pham("S003", ten_moi="Nước ngọt Coca", gia_moi=10000) # Sản phẩm không tồn tại
+
+# print("\n--- TÌM KIẾM SẢN PHẨM ---")
+# kho.tim_kiem_san_pham("Sữa")
+# kho.tim_kiem_san_pham("S002")
+# kho.tim_kiem_san_pham("Bánh Gạo") # Sản phẩm không tồn tại
+
+# print("\n--- XÓA SẢN PHẨM ---")
+# kho.xoa_san_pham("S002")
+# kho.hien_thi_danh_sach() # Hiển thị danh sách sau khi xóa
