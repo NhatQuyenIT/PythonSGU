@@ -41,7 +41,7 @@
 14.	Xây dựng ứng dụng quản lý cửa hàng bán văn phòng phẩm
 15.	Xây dựng ứng dụng quản lý cửa hàng XYZ 
 16.	Xây dựng ứng dụng quản lý học sinh
-17.	Xây dựng ứng dụng quản lý trang trại chăn nuôi ==================
+17.	Xây dựng ứng dụng quản lý trang trại chăn nuôi
 Không bắt buộc:
 18.	Thiết kế các đối tượng hình học 2D và 3D
 19.	Xây dựng trò chơi xếp gạch
