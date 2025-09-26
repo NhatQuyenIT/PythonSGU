@@ -23,3 +23,26 @@
 # print("\n--- XÓA SẢN PHẨM ---")
 # kho.xoa_san_pham("S002")
 # kho.hien_thi_danh_sach() # Hiển thị danh sách sau khi xóa
+
+
+1.	Xây dựng ứng dụng quản lý bán vé máy bay ===========
+2.	Xây dựng ứng dụng quản lý thư viện
+3.	Xây dựng ứng dụng quản lý thi trắc nghiệm
+4.	Xây dựng ứng dụng quản lý kho hàng
+5.	Xây dựng ứng dụng quản lý nhân sự
+6.	Xây dựng ứng dụng quản lý cửa hàng sách
+7.	Xây dựng ứng dụng quản lý siêu thị mini
+8.	Xây dựng ứng dụng quản lý cửa hàng thức ăn nhanh+giải khát (café/ fastfood) ==========
+9.	Xây dựng ứng dụng quản lý khách sạn ============
+10.	Xây dựng ứng dụng quản lý phòng mạch-------------
+11.	Xây dựng ứng dụng quản lý cửa hàng bán thuốc y tế =============
+12.	Xây dựng ứng dụng quản lý cửa hàng bán điện thoại ------------
+13.	Xây dựng ứng dụng quản lý cửa hàng bán máy tính ============
+14.	Xây dựng ứng dụng quản lý cửa hàng bán văn phòng phẩm ==============
+15.	Xây dựng ứng dụng quản lý cửa hàng XYZ 
+16.	Xây dựng ứng dụng quản lý học sinh
+17.	Xây dựng ứng dụng quản lý trang trại chăn nuôi ==================
+Không bắt buộc:
+18.	Thiết kế các đối tượng hình học 2D và 3D
+19.	Xây dựng trò chơi xếp gạch
+20.	Xây dựng trò chơi nuôi heo ủn ỉn
