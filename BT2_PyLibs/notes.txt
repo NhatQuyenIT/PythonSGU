@@ -11,4 +11,14 @@ trícch 1 dòng / 1 cột, array co the random. It nhat 10 vi dụ!
 
 Chủ đề thuyết trình về Machine Learning: K-means, KNN, SVN. Mỗi giải thuật đều có 2 ví dụ minh họa. Nội dung gồm: Giới thiệu, ứng dụng giải thuật và minh hoạ.
 
+BT tuần này: K-means, KNN, SVN mỗi cái 2 ví dụ, và trình bày thêm khái niệm, các nội dung khác, ứng dụng của nó như thế nào? 
+Nó làm tính toán và thực hiện được gì?
+
+Tuần 10 sẽ tiến hành gom các bài tập nhỏ này thành 1 bài tập lớn để báo cáo.
+
+Tuần sau: slide đầu tiên phải giới thiệu về MachineLearning và DeepLearning là gì? 
+Vd: Đầu vào, đầu ra, cách thực hiện, cú pháp code như nào? 
+Làm về Decision Tree, CNN, Classification 
+( dữ liệu số có 2 ví dụ, dữ liệu ảnh có 2 ví dụ, dữ liệu văn bản có 2 ví dụ, dữ liệu video có 2 ví dụ => tổng 10 ví dụ).
+
 https://github.com/microsoft/vscode-extension-samples
