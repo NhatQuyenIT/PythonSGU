@@ -1,0 +1,14 @@
+Bài tập các tuần: 
+1. Sử dụng OOP để viết chương trình quản lý sinh viên, bán hàng,... 
+có bao gồm tính đa hình: 1 đối tượng có nhiều thể hiện khác nhau tùy thuộc vào ngữ cảnh (có hành vi, thuộc tính khác nhau,...)
+
+2. Numpy : vector, matran (n chiều gồm 1,2,3 chiều) voi cac phep toan +-x/ hoac tich dercart, , noi tach, tinh dinh thuc, chuyen vi,... 
+trícch 1 dòng / 1 cột, array co the random. It nhat 10 vi dụ!
+
+3. Pandas: đọc ghi file csv,json, xlsx, xử lý dataframe (10 ví dụ khác biệt vs numpy) và vài ví dụ khác nữa.
+
+4. Matplotlib vẽ 10 biểu đồ
+
+Chủ đề thuyết trình về Machine Learning: K-means, KNN, SVN. Mỗi giải thuật đều có 2 ví dụ minh họa. Nội dung gồm: Giới thiệu, ứng dụng giải thuật và minh hoạ.
+
+https://github.com/microsoft/vscode-extension-samples
