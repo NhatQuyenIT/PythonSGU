@@ -25,7 +25,7 @@
 # kho.hien_thi_danh_sach() # Hiển thị danh sách sau khi xóa
 
 
-1.	Xây dựng ứng dụng quản lý bán vé máy bay ===========
+1.	Xây dựng ứng dụng quản lý bán vé máy bay
 2.	Xây dựng ứng dụng quản lý thư viện
 3.	Xây dựng ứng dụng quản lý thi trắc nghiệm
 4.	Xây dựng ứng dụng quản lý kho hàng
