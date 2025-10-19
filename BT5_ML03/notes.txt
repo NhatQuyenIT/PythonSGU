@@ -1,0 +1,12 @@
+Ứng dụng thực tế (gợi ý nhanh)
+
+- **VGG/ResNet/EfficientNet (Classification):**
+  - Phân loại sản phẩm thương mại điện tử, bệnh lá cây, nhận diện món ăn, chất lượng bề mặt.
+  - **Transfer Learning**: thay head cuối và fine‑tune với dữ liệu riêng.
+
+- **YOLO (Detection):**
+  - Giám sát giao thông/nhà xưởng, đếm người/xe, phát hiện nón bảo hiểm/khẩu trang, phát hiện logo, kiểm tra đóng gói.
+
+### Bài mở rộng
+- Thử thay ảnh đầu vào bằng ảnh nghiệp vụ thật sự của bạn.  
+- Với YOLO, thử trên **video** hoặc **webcam** bằng `yolo.predict(source=0)`.

@@ -1,0 +1,6 @@
+Tuần sau: các em tìm hiểu các mô hình deep learning điển hình CNN sau : 
+1)VGG, 2)ResNet, 3)EfficientNet, 4)YOLO và ứng dụng của nó. Mỗi mô hình 2 bạn + 2 ví dụ
+
+các em tiếp tục tìm hiểu các mô hình deep learning điển hình : 
+5)RNN 6)Encoder-decoder, 7)GAN, 8)Transformer và ứng dụng của nó. 
+Mỗi tuần 2-3 topic, trình bày theo thứ tự trên. Mỗi mô hình 2 bạn + 2 ví dụ. Lớp trưởng phân công các bạn chưa báo cáo nhé.
