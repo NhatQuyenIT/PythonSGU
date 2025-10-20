@@ -1,0 +1,7 @@
+# Bỏ qua ảnh và video
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.mp4
+*.avi
