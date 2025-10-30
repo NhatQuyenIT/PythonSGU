@@ -4,3 +4,7 @@ Tuần sau: các em tìm hiểu các mô hình deep learning điển hình CNN s
 các em tiếp tục tìm hiểu các mô hình deep learning điển hình : 
 5)RNN 6)Encoder-decoder, 7)GAN, 8)Transformer và ứng dụng của nó. 
 Mỗi tuần 2-3 topic, trình bày theo thứ tự trên. Mỗi mô hình 2 bạn + 2 ví dụ. Lớp trưởng phân công các bạn chưa báo cáo nhé.
+
+9)VIT (Vision Transformer), 10)CLIP, 11)Self-Organizing Maps (SOM), 
+12)GNN (Graph Neural Networks), 13) GCN (Graph Convolutional Networks). 
+Mỗi cái 1 ví dụ thực tế
