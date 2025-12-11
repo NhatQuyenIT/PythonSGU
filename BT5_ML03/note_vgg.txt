@@ -1,0 +1,28 @@
+IMAGENET_MEAN / IMAGENET_STD: hai danh sách chuẩn hóa kênh RGB theo ImageNet.
+Hàm load_image(path_or_url, to_rgb=True):
+Nếu path_or_url bắt đầu bằng http/https thì tải bằng requests.get, mở ảnh từ bộ nhớ bằng Image.open(io.BytesIO(...)).
+Ngược lại, mở ảnh từ đường dẫn local với Image.open.
+Nếu lỗi, in thông báo (“Không thể tải ảnh”) rồi ném lại exception.
+Nếu to_rgb và ảnh không phải RGB, chuyển sang RGB.
+Trả về đối tượng PIL.Image.
+Hàm show_image(img, title=None):
+Tạo figure 4x4, hiển thị ảnh, tắt trục; nếu có title thì đặt tiêu đề; plt.show() để hiện.
+Hàm preprocess_imagenet(img_pil, size=224):
+Tạo transforms.Compose gồm: Resize (bilinear) đến size, CenterCrop size, ToTensor (đưa về tensor CxHxW), Normalize với mean/std ImageNet.
+unsqueeze(0) thêm chiều batch → tensor shape (1,3,H,W).
+IMG_PATH = r"D:\nŽŸm 4\PythonSGU\BaiTap+BaiGiangML\BaiTap\img\dog_alaska.jpg": đường dẫn ảnh demo (raw string).
+img_source = IMG_PATH; img = load_image(img_source, to_rgb=True): nạp ảnh demo.
+show_image(img, " §›nh Ž §u vAÿo (demo)")`: hiển thị ảnh nguồn (title bị lỗi font, nghĩa “Ảnh đầu vào”).
+Comment giới thiệu VGG16.
+from torchvision.models import vgg16, VGG16_Weights: nạp model và enum weights.
+Khối try:
+weights = VGG16_Weights.DEFAULT: lấy trọng số ImageNet pretrained.
+categories = weights.meta.get("categories", None): lấy danh sách nhãn lớp ImageNet.
+model_vgg = vgg16(weights=weights).to(device).eval(): tạo model với trọng số pretrained, chuyển sang device, đặt eval mode.
+print("Ž?Aœ t §œi VGG16 pretrained."): thông báo tải thành công (lỗi font).
+Khối except: nếu tải thất bại, báo lỗi, tạo model random init, categories = None.
+x = preprocess_imagenet(img, size=224).to(device): tiền xử lý ảnh thành tensor batch 1x3x224x224 và đưa lên device.
+Với torch.no_grad() (không tính gradient): logits = model_vgg(x) chạy forward; probs = torch.softmax(logits, dim=1).cpu().numpy()[0] lấy xác suất lớp, chuyển về NumPy array 1D.
+top5_idx = np.argsort(-probs)[:5]: sắp xếp giảm dần, lấy chỉ số Top-5.
+In Top-5:
+Với từng i trong top5, label = categories[i] nếu có nhãn, ngược lại class_{i}; in tên nhãn và xác suất.
