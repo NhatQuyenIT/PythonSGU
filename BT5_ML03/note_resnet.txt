@@ -1,0 +1,22 @@
+19-20 Đặt hằng số mean/std của ImageNet để chuẩn hóa ảnh đầu vào cho mô hình pretrained.
+22-35 Định nghĩa load_image:
+24-29 Nếu đường dẫn là URL (bắt đầu http/https) thì tải bằng requests với timeout 15s, kiểm tra lỗi HTTP, mở ảnh từ byte buffer; nếu không thì mở trực tiếp từ đường dẫn file.
+30-32 Bắt mọi lỗi, in thông báo không tải được ảnh rồi raise lại để biết lỗi cụ thể.
+33-34 Nếu cần RGB và ảnh chưa ở chế độ RGB thì chuyển đổi.
+35 Trả về đối tượng PIL Image.
+37-42 Định nghĩa show_image: tạo figure 4x4, hiển thị ảnh bằng matplotlib, tắt trục, đặt tiêu đề nếu có, rồi show.
+44-51 Định nghĩa preprocess_imagenet: tạo pipeline transforms gồm Resize bilinear về kích thước size, CenterCrop size, chuyển sang tensor, chuẩn hóa theo mean/std ImageNet; thêm batch dimension bằng unsqueeze(0).
+53 Khai báo đường dẫn ảnh mẫu dog_alaska.jpg (chuỗi raw; một số ký tự tiếng Việt bị lỗi mã hóa trong đường dẫn comment).
+55-57 Đặt nguồn ảnh = đường dẫn trên, tải ảnh (chuyển RGB), hiển thị ảnh gốc với tiêu đề (tiêu đề cũng bị lỗi mã hóa nhưng chỉ là nhãn demo).
+59 Chuỗi docstring ngắn ghi chú về ResNet và phân loại ảnh (chỉ để chú thích, không dùng).
+61 Nhập hàm tạo resnet18 và tập trọng số ResNet18_Weights từ torchvision.models.
+63-71 Tải mô hình ResNet18:
+64 Lấy trọng số pretrained mặc định.
+65 Lấy danh sách nhãn ImageNet từ metadata nếu có.
+66 Tạo mô hình resnet18 với trọng số, đưa lên thiết bị, đặt chế độ eval.
+67 In thông báo tải pretrained thành công.
+68-71 Nếu lỗi (không tải được trọng số), in thông báo, khởi tạo mô hình random, đặt categories=None.
+73-77 Tiền xử lý ảnh và chạy suy luận:
+73 Biến ảnh PIL thành tensor chuẩn hóa, size 224, chuyển sang device.
+74-76 Trong khối no_grad (không tính gradient), chạy mô hình để lấy logits, tính xác suất softmax và chuyển sang mảng numpy 1D.
+78-82 Lấy top-5 dự đoán: sắp xếp xác suất giảm dần, in nhãn (từ categories nếu có, ngược lại tên class_i) kèm xác suất.
