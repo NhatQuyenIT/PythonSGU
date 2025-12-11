@@ -1,0 +1,45 @@
+ (line 19) khai báo hằng số mean của ImageNet dùng để chuẩn hóa kênh RGB.
+ (line 20) khai báo hằng số std của ImageNet dùng để chuẩn hóa kênh RGB.
+ (line 22) định nghĩa hàm load_image nhận đường dẫn hoặc URL, chuyển về RGB nếu cần.
+ (lines 23-30) khối try/except để đọc ảnh và bắt lỗi.
+ (lines 24-27) nếu là URL (bắt đầu http/https) thì tải bằng requests.get, kiểm tra mã lỗi (raise_for_status), mở ảnh từ bytes với PIL.
+ (line 28) nếu không phải URL thì mở trực tiếp từ đường dẫn file bằng Image.open.
+ (line 29) nếu lỗi, in thông báo (tiếng Việt lỗi font “Không thể tải ảnh”) và ném lại ngoại lệ.
+ (line 31) nếu yêu cầu RGB và ảnh chưa phải RGB thì chuyển sang RGB (img.convert("RGB")).
+ (line 32) trả về đối tượng ảnh PIL đã đọc.
+ (line 34) định nghĩa hàm show_image để hiển thị ảnh bằng matplotlib.
+ (line 35) tạo figure kích thước 4x4 inch.
+ (line 36) hiển thị nội dung ảnh (plt.imshow).
+ (line 37) tắt trục tọa độ (plt.axis("off")).
+ (line 38) nếu có tiêu đề, đặt tiêu đề cho ảnh.
+ (line 39) hiển thị cửa sổ/plot (plt.show()).
+ (line 41) định nghĩa hàm preprocess_imagenet để tiền xử lý ảnh theo chuẩn ImageNet, đầu ra là tensor batch 1 mẫu.
+ (line 42) tạo chuỗi biến đổi tfm bằng transforms.Compose.
+ (line 43) resize ảnh về kích thước vuông size (mặc định 224) với nội suy bilinear.
+ (line 44) crop tâm (center crop) về đúng kích thước size.
+ (line 45) chuyển ảnh PIL sang tensor PyTorch và chuẩn hóa giá trị về [0,1].
+ (line 46) chuẩn hóa từng kênh theo mean/std ImageNet.
+ (line 47) đóng danh sách biến đổi.
+ (line 48) áp dụng tfm lên ảnh PIL và thêm chiều batch bằng unsqueeze(0); trả về tensor shape (1,3,H,W).
+ (line 50) đặt đường dẫn ảnh demo dog_alaska.jpg (raw string, có ký tự tiếng Việt lỗi font “Năm”).
+ (line 52) gán img_source bằng IMG_PATH (có thể thay bằng URL khác nếu muốn).
+ (line 53) đọc ảnh nguồn bằng load_image, đảm bảo RGB.
+ (line 54) hiển thị ảnh vừa đọc với tiêu đề (chuỗi tiếng Việt lỗi font “Ảnh đầu vào (demo)”).
+ (line 56) chuỗi docstring ba nháy chỉ để chú thích: giới thiệu EfficientNet dùng cho phân loại ảnh (compound scaling).
+ (line 58) nhập hàm khởi tạo efficientnet_b0 và lớp trọng số EfficientNet_B0_Weights từ torchvision.
+ (line 60) bắt đầu khối try để tải trọng số pretrained.
+ (line 61) lấy bộ trọng số mặc định EfficientNet_B0_Weights.DEFAULT.
+ (line 62) lấy danh sách nhãn (categories) từ metadata của bộ trọng số (nếu có).
+ (line 63) khởi tạo mô hình EfficientNet-B0 với trọng số pretrained, chuyển sang thiết bị (to(device)) và chế độ eval.
+ (line 64) in thông báo đã tải trọng số pretrained thành công (lỗi font).
+ (line 65) nếu có lỗi trong quá trình tải, nhảy vào except.
+ (line 66) in thông báo thất bại và sẽ khởi tạo random (lỗi font “Không tải được trọng số…”).
+ (line 67) khởi tạo EfficientNet-B0 không trọng số (weights=None), chuyển thiết bị, đặt eval.
+ (line 68) đặt categories = None vì không có nhãn khi không dùng pretrained.
+ (line 70) tiền xử lý ảnh demo về tensor chuẩn ImageNet kích thước 224 và chuyển lên thiết bị.
+ (line 71) mở ngữ cảnh không tính gradient (torch.no_grad) vì chỉ inference.
+ (line 72) chạy mô hình trên ảnh đã tiền xử lý để lấy logits.
+ (line 73) tính softmax trên logits để ra xác suất, chuyển về CPU, sang numpy và lấy mảng 1D của mẫu đầu tiên.
+ (line 75) lấy top-5 chỉ số lớp có xác suất cao nhất bằng cách sắp xếp giảm dần.
+ (line 76) in tiêu đề kết quả Top-5.
+ (lines 77-79) lặp qua từng lớp trong top-5, lấy nhãn thật nếu có categories, nếu không thì đặt tên class_i, và in xác suất định dạng 4 chữ số thập phân.
