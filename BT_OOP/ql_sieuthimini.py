@@ -33,6 +33,19 @@ class KhoHang:
     def __init__(self):
         self.danh_sach_san_pham = []
 
+         # TẠO SẴN DỮ LIỆU MẪU
+        du_lieu_mau = [
+            SanPham("SP001", "Bánh Oreo", 12000, 50),
+            SanPham("SP002", "Nước suối Aquafina", 7000, 100),
+            SanPhamDienTu("SPDT01", "Tai nghe Bluetooth", 250000, 20, 12),
+            SanPhamDienTu("SPDT02", "Máy sấy tóc", 180000, 15, 6),
+            ThucPham("TP001", "Sữa tươi Vinamilk", 34000, 30, "15/12/2025"),
+            ThucPham("TP002", "Thịt bò đông lạnh", 150000, 10, "20/11/2025")
+        ]
+
+        for sp in du_lieu_mau:
+            self.them_san_pham(sp)
+
     def them_san_pham(self, san_pham):
         self.danh_sach_san_pham.append(san_pham)
         print(f"Đã thêm sản phẩm: {san_pham.ten_sp}")
@@ -144,6 +157,7 @@ class KhoHang:
 
 def menu():
     ql_sieuthimini = KhoHang()
+        
     while True:
         print("\n--- QUẢN LÝ SIÊU THỊ MINI ---")
         print("1. Thêm sản phẩm")
