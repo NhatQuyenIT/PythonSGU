@@ -1,0 +1,77 @@
+Tải & chuẩn hóa dữ liệu:
+
+digits = load_digits(): lấy bộ ảnh 8x8 (0..9).
+X = digits.images, y = digits.target: tách ảnh và nhãn.
+X = X / 16.0: chuẩn hóa cường độ điểm ảnh từ 0..16 về 0..1.
+X = torch.tensor(X, dtype=torch.float32).unsqueeze(1): chuyển sang tensor float, thêm chiều kênh (C=1) thành shape (N, 1, 8, 8).
+y = torch.tensor(y, dtype=torch.long): nhãn thành tensor kiểu long (dùng cho CrossEntropyLoss).
+Chia dữ liệu & loader:
+
+train_test_split(..., test_size=0.2, random_state=42, stratify=y): 80% train, 20% test, giữ tỉ lệ lớp.
+TensorDataset(...) gộp X, y thành tập train/test.
+DataLoader(...): batch train 64, shuffle; test 128, không shuffle.
+Định nghĩa mô hình SmallCNN(nn.Module):
+
+self.net = nn.Sequential(...): khối tích chập + kích hoạt + pooling.
+Conv2d(1,16,kernel_size=3,padding=1): 1 kênh vào → 16 kênh, giữ kích thước 8x8.
+ReLU(): phi tuyến.
+MaxPool2d(2): giảm kích thước còn 4x4.
+Conv2d(16,32,kernel_size=3,padding=1): 16→32 kênh, kích thước vẫn 4x4.
+ReLU().
+MaxPool2d(2): còn 2x2.
+self.fc = nn.Sequential(...): khối phân loại fully connected.
+Flatten(): biến (32,2,2) thành vector 128.
+Linear(32*2*2, 64): 128→64.
+ReLU().
+Linear(64, 10): ra 10 lớp (chữ số 0..9).
+forward: đưa x qua self.net, rồi self.fc, trả logits.
+Khởi tạo huấn luyện:
+
+model = SmallCNN().to(device): tạo mô hình, đưa lên CPU/GPU.
+criterion = nn.CrossEntropyLoss(): hàm mất mát phân loại đa lớp.
+optimizer = optim.Adam(model.parameters(), lr=1e-3): tối ưu Adam với lr 0.001.
+Vòng lặp train nhanh:
+
+EPOCHS = 8: số epoch.
+for epoch in range(1, EPOCHS+1):: lặp 1..8.
+model.train(): bật train mode (batchnorm/dropout nếu có).
+total_loss = 0.0: tích lũy loss.
+Vòng for xb, yb in train_loader:: duyệt từng batch.
+xb, yb = xb.to(device), yb.to(device): đưa batch lên thiết bị.
+optimizer.zero_grad(): reset gradient.
+logits = model(xb): forward.
+loss = criterion(logits, yb): tính loss.
+loss.backward(): backprop.
+optimizer.step(): cập nhật trọng số.
+total_loss += loss.item() * xb.size(0): cộng loss theo số mẫu batch.
+avg_loss = total_loss / len(train_loader.dataset): loss trung bình epoch.
+Đánh giá nhanh:
+model.eval(): bật eval mode.
+all_preds, all_targets = [], []: chứa dự đoán và nhãn thật.
+with torch.no_grad():: tắt gradient khi infer.
+Vòng for xb, yb in test_loader:: duyệt test.
+xb, yb = xb.to(device), yb.to(device).
+preds = model(xb).argmax(dim=1): chọn lớp xác suất cao nhất.
+Append preds.cpu().numpy() và yb.cpu().numpy() vào list.
+np.concatenate(...) gộp lại.
+acc = accuracy_score(all_targets, all_preds): tính accuracy.
+print(f"..."): in epoch, loss, accuracy.
+Hiển thị một vài dự đoán:
+
+model.eval(): dùng chế độ infer.
+fig, axes = plt.subplots(2, 5, figsize=(8,3)): tạo grid 2x5 ảnh.
+axes = axes.ravel(): flatten mảng axes.
+shown = 0: (biến này không dùng tiếp, có thể bỏ).
+with torch.no_grad(): tránh tính gradient.
+for i in range(10):: lặp 10 ảnh test đầu.
+img = X_test[i:i+1].to(device): lấy 1 ảnh (giữ chiều batch).
+pred = model(img).argmax(dim=1).item(): dự đoán lớp.
+axes[i].imshow(X_test[i,0].cpu(), cmap="gray"): vẽ ảnh kênh 0 (grayscale).
+axes[i].set_title(f"Pred: {pred} / True: {y_test[i].item()}"): tiêu đề dự đoán/thật.
+axes[i].axis("off"): tắt trục.
+plt.suptitle(...): tiêu đề chung.
+plt.tight_layout(): bố trí gọn.
+plt.show(): hiển thị.
+except Exception as e:: nếu có lỗi (thiếu PyTorch, v.v.) thì:
+
+print("...:", e): báo lỗi.
