@@ -1,54 +1,22 @@
-🔵 K-means (Clustering)
+🔍 1. K-means là thuật toán phân cụm (clustering)
 
-Phân nhóm khách hàng trong siêu thị
+Học không giám sát (unsupervised learning)
 
-Dữ liệu: tuổi, thu nhập, thói quen mua sắm.
+Không cần dữ liệu có nhãn.
 
-K-means chia khách hàng thành các cụm: sinh viên thu nhập thấp, người đi làm thu nhập trung bình, người giàu hay mua hàng xa xỉ.
+Mục tiêu: tự chia dữ liệu thành K cụm sao cho các điểm trong cùng 1 cụm giống nhau nhất có thể.
 
-Giúp siêu thị xây dựng chương trình khuyến mãi phù hợp.
-
-
-Nhận diện khuôn mặt không cần gắn nhãn
-
-Tập ảnh khuôn mặt nhưng không biết ai là ai.
-
-K-means gom lại thành các cụm (người A, người B, người C).
-
-Dùng trong ứng dụng tự động tổ chức album ảnh (giống Google Photos).
-
-🟢 KNN (K-Nearest Neighbors – Classification/Regression)
-
-Dự đoán bệnh tiểu đường
-
-Input: tuổi, cân nặng, mức đường huyết, huyết áp.
-
-KNN sẽ tìm các bệnh nhân gần nhất trong dữ liệu huấn luyện để đoán xem người mới có khả năng bị tiểu đường hay không.
+📌 Ví dụ: Bạn có 1000 bức ảnh và muốn máy tự chia thành các nhóm ảnh giống nhau 
+(chưa biết nhóm nào là mèo, nhóm nào là chó).
 
 
-Nhận diện chữ viết tay (MNIST dataset)
+2. K-NN là thuật toán phân loại (classification) hoặc hồi quy (regression)
 
-Input: ảnh chữ số viết tay (0–9).
+Học có giám sát (supervised learning)
 
-KNN tìm những ảnh gần nhất trong tập huấn luyện.
+Cần dữ liệu đã có nhãn.
 
-Nếu phần lớn hàng xóm là số 8 → mẫu mới được dự đoán là số 8.
+Mục tiêu: dự đoán nhãn của một điểm mới dựa trên K hàng xóm gần nhất.
 
-🟣 SVM (Support Vector Machine)
-
-Phân loại spam email
-
-Dữ liệu: từ khóa trong email, tần suất, độ dài tiêu đề.
-
-SVM tìm “siêu phẳng” phân chia spam và không spam.
-
-Giúp lọc thư rác trong Gmail, Outlook.
-
-
-Nhận diện cảm xúc trong phim
-
-Input: khuôn mặt diễn viên (ảnh).
-
-SVM phân loại: vui, buồn, giận dữ, sợ hãi.
-
-Dùng trong phân tích hành vi người xem hoặc robot giao tiếp.
+📌 Ví dụ: Bạn có ảnh đã biết “mèo”, “chó”, “gà”. 
+Khi có ảnh mới, KNN tìm ảnh nào giống nhất rồi quyết định nó thuộc lớp nào.
